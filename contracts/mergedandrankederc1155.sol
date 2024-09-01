@@ -99,6 +99,7 @@ function determineConsensus(uint256 _communityId, uint256 _weekNumber, uint256 _
     ICommunityGovernanceContributions.Group memory group = groups[_groupId];
     require(group.members.length > 0, "Group does not exist");
     
+    //no need for that
     console.log("Checking if all members submitted rankings");
     bool allSubmitted = allMembersSubmitted(_communityId, _weekNumber, _groupId, group);
     console.log("All members submitted: %s", allSubmitted);

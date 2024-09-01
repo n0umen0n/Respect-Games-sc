@@ -1,0 +1,92 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalRespect",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256[][]",
+						"name": "groupRankings",
+						"type": "uint256[][]"
+					}
+				],
+				"name": "distributeRespect",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "distribution",
+						"type": "uint256[]"
+					}
+				],
+				"name": "getSumOfDistribution",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"custom:dev-run-script": "/script/resptest.js",
+			"details": "Manages community creation, membership, and contributions",
+			"kind": "dev",
+			"methods": {},
+			"title": "CommunityGovernance",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/respectdistrtest.sol": "LiquidRespectDistribution"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/respectdistrtest.sol": {
+			"keccak256": "0xb86e91255cb4e18f4a86387d33ff885c993d937529953f70edaab19c51aef5cf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7cf1365b8345e2ae10d4d52521c622df0d610c3f4a79a261b7c4916c6ab839f7",
+				"dweb:/ipfs/QmReXAixZbBgSiTaPRcDyT56qMY2cctgf3k7uTHD2DG6uW"
+			]
+		}
+	},
+	"version": 1
+}
