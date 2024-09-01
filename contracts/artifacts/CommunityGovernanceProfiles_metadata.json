@@ -432,6 +432,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					}
+				],
+				"name": "getRespectToDistribute",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "_user",
 						"type": "address"
@@ -560,6 +579,24 @@
 					}
 				],
 				"name": "setRankingsContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "setRespectToDistribute",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -737,11 +774,11 @@
 			]
 		},
 		"contracts/profilesandapprovals.sol": {
-			"keccak256": "0x93d58967f7fe3e6585c2bdf34e9969d02ff875dd4cde9727dc1384f49b719197",
+			"keccak256": "0x462391cab949fb5cae470a1cadb437e4e5d75d2b8b5858222ababbd25fb0b37d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://146ad974b4bcdb8756767563495c58caa99e57d8a5a7e02581b93a332d1d4569",
-				"dweb:/ipfs/Qma4LzR6ZjMY71Gg3jwf7wuDBSnC9SjLAJYhW3MufGdtWx"
+				"bzz-raw://3874939eff43f6f3080232f77cda9e80a210fd663a922b7388b27b06eb082d84",
+				"dweb:/ipfs/QmTNXspHny2jvMrsQPChvAMxurZ2FLJz7Vz89phVQ1p3nM"
 			]
 		},
 		"hardhat/console.sol": {

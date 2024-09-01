@@ -148,11 +148,11 @@
 			]
 		},
 		"contracts/mergedandrankederc1155.sol": {
-			"keccak256": "0xc9a722c79cb5c4080e1e27774cc6be07c57b71e7fac675b3e988804ddabc1491",
+			"keccak256": "0x03d9b61ed698d5f328142168d1e30dbe95239a7e21ab7edeee84ff2126779ed3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9b5fe066c857ec4d7ab2d81bd8d765d3cc51d9c65d8988cdf41ef1dac1c70ce6",
-				"dweb:/ipfs/QmdmP8CMkTC9xN7ZNH4NL5Y68WRcREstxcp2S6bMrrFnAr"
+				"bzz-raw://ea018c28cdfa4da4c2bf879b75262182c5acefb95c38633a51f12c1a198fb000",
+				"dweb:/ipfs/QmRHX2f1GHiYFShxzGCTwhdqNRxfeuUdq5hd3ecLfDk5sM"
 			]
 		},
 		"hardhat/console.sol": {

@@ -7,7 +7,7 @@
     console.log('Accounts loaded:', accounts.length, 'accounts available');
 
     const deployerAccount = accounts[0];
-    const userAccounts = accounts.slice(1, 14); // Use 10 user accounts
+    const userAccounts = accounts.slice(1, 14); // Use 13 user accounts
 
     // Helper function to log events
     const logEvents = async (contract, eventName) => {
@@ -23,6 +23,30 @@
       const communityProfile = await profilesContract.methods.getCommunityProfile(communityId).call();
       console.log(`Community ${communityId} state:`, communityProfile[5] == "0" ? "ContributionSubmission" : "ContributionRanking");
       console.log(`Community ${communityId} event count:`, communityProfile[6]);
+    }
+
+    // New helper function to verify respect distribution
+    async function verifyRespectDistribution(communityId, initialAmount) {
+      let totalDistributed = web3.utils.toBN(0);
+      const members = await profilesContract.methods.getCommunityMembers(communityId).call();
+      
+      for (const member of members[0]) { // members[0] contains the member addresses
+        const claimableTokens = await rankingsContract.methods.getClaimableTokens(communityId, member).call();
+        totalDistributed = totalDistributed.add(web3.utils.toBN(claimableTokens.amount));
+      }
+
+      console.log('\nRespect Distribution Verification:');
+      console.log('Initial amount to distribute:', web3.utils.fromWei(initialAmount, 'ether'));
+      console.log('Total amount distributed:', web3.utils.fromWei(totalDistributed, 'ether'));
+      
+      const difference = web3.utils.toBN(initialAmount).sub(totalDistributed);
+      console.log('Difference:', web3.utils.fromWei(difference, 'ether'));
+      
+      if (difference.isZero()) {
+        console.log('Respect distribution is correct!');
+      } else {
+        console.log('Warning: Respect distribution does not match the initial amount');
+      }
     }
 
     // Deploy CommunityGovernanceProfiles contract
@@ -72,6 +96,11 @@
       "TST"
     ).send({ from: deployerAccount, gas: 5000000 });
     console.log('Community created:', createCommunityResult.events.CommunityCreated.returnValues);
+
+    // Set respect to distribute
+    const respectToDistribute = web3.utils.toWei('1000', 'ether'); // 1000 tokens
+    await profilesContract.methods.setRespectToDistribute(1, respectToDistribute).send({ from: deployerAccount, gas: 3000000 });
+    console.log('Respect to distribute set:', respectToDistribute);
 
     // Log initial community state
     console.log("Initial community state:");
@@ -136,14 +165,6 @@
     console.log("\nCommunity state before changing to ContributionRanking:");
     await logCommunityState(1);
 
-    // Check and adjust event count if necessary
-    const communityProfileBeforeChange = await profilesContract.methods.getCommunityProfile(1).call();
-    if (parseInt(communityProfileBeforeChange[6]) !== parseInt(currentWeek)) {
-        console.log('Warning: Event count does not match current week. Adjusting...');
-        // Assuming you've added an adjustEventCount function to your contract
-        await profilesContract.methods.adjustEventCount(1, currentWeek).send({ from: deployerAccount, gas: 5000000 });
-    }
-
     // Change state to ContributionRanking
     console.log('\nChanging state to ContributionRanking...');
     await profilesContract.methods.changeState(1).send({ from: deployerAccount, gas: 5000000 });
@@ -180,7 +201,7 @@
     console.log("\nFinal community state:");
     await logCommunityState(1);
 
-    // Verify results (only if groups are not empty)
+    // Verify results and check claimable tokens
     if (groups.length > 0) {
       for (let groupId = 0; groupId < groups.length; groupId++) {
         console.log(`\nResults for Group ${groupId}:`);
@@ -188,7 +209,7 @@
         console.log('Consensus Ranking:', consensusRanking.rankedScores);
         console.log('Transient Scores:', consensusRanking.transientScores);
 
-        // Check respect distribution
+        // Check respect distribution and claimable tokens
         for (const member of groups[groupId].members) {
           const respectData = await contributionsContract.methods.getUserRespectData(member, 1).call();
           console.log(`Respect data for ${member}:`, {
@@ -196,11 +217,35 @@
             averageRespect: respectData.averageRespect / 1000, // Divide by SCALING_FACTOR
             last12WeeksRespect: respectData.last12WeeksRespect.map(r => r / 1000) // Divide by SCALING_FACTOR
           });
+
+          const claimableTokens = await rankingsContract.methods.getClaimableTokens(1, member).call();
+          console.log(`Claimable tokens for ${member}:`, {
+            amount: web3.utils.fromWei(claimableTokens.amount, 'ether'),
+            claimed: claimableTokens.claimed
+          });
         }
       }
     } else {
       console.log('No groups available for result verification');
     }
+
+    // Verify respect distribution
+    await verifyRespectDistribution(1, respectToDistribute);
+
+    // Test token claiming
+    console.log('\nTesting token claiming:');
+    const testClaimUser = userAccounts[0];
+    const initialClaimableTokens = await rankingsContract.methods.getClaimableTokens(1, testClaimUser).call();
+    console.log(`Initial claimable tokens for ${testClaimUser}:`, web3.utils.fromWei(initialClaimableTokens.amount, 'ether'));
+
+    await rankingsContract.methods.claimTokens(1).send({ from: testClaimUser, gas: 3000000 });
+    console.log(`Tokens claimed by ${testClaimUser}`);
+
+    const finalClaimableTokens = await rankingsContract.methods.getClaimableTokens(1, testClaimUser).call();
+    console.log(`Final claimable tokens for ${testClaimUser}:`, {
+      amount: web3.utils.fromWei(finalClaimableTokens.amount, 'ether'),
+      claimed: finalClaimableTokens.claimed
+    });
 
     // Verify ERC20 token creation
     const communityProfileAfter = await profilesContract.methods.getCommunityProfile(1).call();
@@ -214,6 +259,7 @@
     await logEvents(rankingsContract, 'ConsensusReached');
     await logEvents(rankingsContract, 'RespectIssued');
     await logEvents(rankingsContract, 'RespectIssueFailed');
+    await logEvents(rankingsContract, 'TokensClaimed');
 
     console.log('\nScript execution completed successfully.');
   } catch (error) {

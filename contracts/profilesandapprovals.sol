@@ -217,6 +217,16 @@ contract CommunityGovernanceProfiles is ICommunityGovernanceProfiles, Ownable {
         }
     }
 
+    function getRespectToDistribute(uint256 _communityId) public view returns (uint256) {
+        require(_communityId > 0 && _communityId < nextCommunityId, "Invalid community ID");
+        return communities[_communityId].respectToDistribute;
+    }
+
+    function setRespectToDistribute(uint256 _communityId, uint256 _amount) public onlyOwner {
+        require(_communityId > 0 && _communityId < nextCommunityId, "Invalid community ID");
+        communities[_communityId].respectToDistribute = _amount;
+    }
+
     function getUserProfile(address _user) public view returns (string memory, string memory, string memory) {
         require(bytes(users[_user].username).length > 0, "Profile does not exist");
         UserProfile storage user = users[_user];

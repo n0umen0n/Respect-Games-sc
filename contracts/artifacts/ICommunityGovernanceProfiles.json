@@ -50,6 +50,7 @@
 		"gasEstimates": null,
 		"methodIdentifiers": {
 			"getCommunityProfile(uint256)": "99664245",
+			"getRespectToDistribute(uint256)": "d5d8617a",
 			"getUserCommunityData(address,uint256)": "0b26ed7b",
 			"getUserProfile(address)": "987ee156"
 		}
@@ -104,6 +105,25 @@
 					"internalType": "address",
 					"name": "",
 					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "_communityId",
+					"type": "uint256"
+				}
+			],
+			"name": "getRespectToDistribute",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
 				}
 			],
 			"stateMutability": "view",
