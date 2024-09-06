@@ -1,0 +1,443 @@
+{
+  "name": "CommunityGovernanceContributions",
+  "address": "0x2e6b61a2262f453c88fd6a595cf8cd5f7fdb17a6",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_profilesContractAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "communityId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "weekNumber",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "contributionIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "ContributionSubmitted",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        }
+      ],
+      "name": "createGroupsForCurrentWeek",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "communityId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "weekNumber",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "groupCount",
+          "type": "uint256"
+        }
+      ],
+      "name": "GroupsCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "communityId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "weekNumber",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "respectAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "averageRespect",
+          "type": "uint256"
+        }
+      ],
+      "name": "RespectUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "string[]",
+              "name": "links",
+              "type": "string[]"
+            }
+          ],
+          "internalType": "struct CommunityGovernanceContributions.Contribution[]",
+          "name": "_contributions",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "submitContributions",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_weekNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_respect",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateRespectData",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAverageRespect",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_weekNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "getContributions",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "names",
+          "type": "string[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "descriptions",
+          "type": "string[]"
+        },
+        {
+          "internalType": "string[][]",
+          "name": "links",
+          "type": "string[][]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCurrentWeek",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_weekNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "getGroupsForWeek",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address[]",
+              "name": "members",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct CommunityGovernanceContributions.Group[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLastRoomSizes",
+      "outputs": [
+        {
+          "internalType": "uint8[]",
+          "name": "",
+          "type": "uint8[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getUserContributedWeeks",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getUserRespectData",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "totalRespect",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "averageRespect",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "last12WeeksRespect",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_communityId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_week",
+          "type": "uint256"
+        }
+      ],
+      "name": "getWeeklyContributors",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "profilesContract",
+      "outputs": [
+        {
+          "internalType": "contract ICommunityGovernanceProfiles",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "userContributions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "communityId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalRespect",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "averageRespect",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "filePath": "Respect Games sc/contracts/contributandgroup.sol",
+  "pinnedAt": 1725183058231
+}

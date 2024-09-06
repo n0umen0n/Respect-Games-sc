@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contractsproxy/CommunityGovernanceProfilesStorage.sol": "CommunityGovernanceProfilesStorage"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contractsproxy/CommunityGovernanceProfilesStorage.sol": {
+			"keccak256": "0x4324ab2fe1c5799b41013ba758127bd5b41cd6332a8df1899c9ba3cf0d85472c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://22ab6a2b3ffd2692c888bb20cfb36a7ee3ae288bfb06d0bba00ca31e187425bd",
+				"dweb:/ipfs/QmfYMw86H4YYucJX5g3rYxWhADvrw4sKq5DTzXZ5vrkFKo"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceContributions.sol": {
+			"keccak256": "0x621cfea1f4f183682315b616a3aa928cd3fd519f3dc7fc1a9f366569fe21778f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dcc675b8edfcd72c64657bda8fb6bdbae9b7a6cda6589f3ad8216c69848c6df2",
+				"dweb:/ipfs/QmeYniCRzdTKyBkCyHcYRh95SAWGe12eJXNMJg7ntMFbW5"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceMultiSig.sol": {
+			"keccak256": "0x0055a249079e0e1eaf32391751237bfb6cc7526070623a83cae4a54a263a870d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ace5c1f7171187ed927be3cff005b2e6c6d18b9bd9aef26c8a6ce503debf9de1",
+				"dweb:/ipfs/QmaCJLXwAXPU5CsVJNQfc8KPGpiaAGzp8Now3dUMCLr5Ci"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceProfiles.sol": {
+			"keccak256": "0xc3e7d73599515dce9dc7594a0eeaf3ce0c9b5fe90632c4d069f8c154a884d0b5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://471ec626f831982a3706de1e2ad78b2bdb5d092f875b0b3db9d71fb6ab86262d",
+				"dweb:/ipfs/Qmd6ysRsFLkk8WPHCGcjZRsDUwEU13btYj9LDekkAGjKgE"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceRankings.sol": {
+			"keccak256": "0x681835ffddf81031e22f033285d4dd2f4b655a937e5b668130eb08d4f7d1217a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7f113e274083174504c988f245cb75059292779d6006fb8574c5ec90be948674",
+				"dweb:/ipfs/QmWE4D6Qg5ADGwup5VEMvb4Yv6aX5Atx5EvAt1jHhnKvuH"
+			]
+		}
+	},
+	"version": 1
+}

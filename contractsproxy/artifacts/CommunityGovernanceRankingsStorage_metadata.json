@@ -1,0 +1,157 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "communityExists",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contributionsContract",
+				"outputs": [
+					{
+						"internalType": "contract ICommunityGovernanceContributions",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "multisigContract",
+				"outputs": [
+					{
+						"internalType": "contract ICommunityGovernanceMultiSig",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "profilesContract",
+				"outputs": [
+					{
+						"internalType": "contract ICommunityGovernanceProfiles",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "userClaimableTokens",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "claimed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contractsproxy/CommunityGovernanceRankingsStorage.sol": "CommunityGovernanceRankingsStorage"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contractsproxy/CommunityGovernanceRankingsStorage.sol": {
+			"keccak256": "0x0905da5811bf342d3123dcea363ff7fd1422e06b0f87418775f19a4a8033b401",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://22e4ab75a0edcdbe4105b4444ffe1d503d6f97b89c2b1376b12f7fcbd62f0a02",
+				"dweb:/ipfs/Qme7Bh9LhX3mGwjWxpJnurnMrDfoMseoE2NQ17dAEfNx18"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceContributions.sol": {
+			"keccak256": "0x621cfea1f4f183682315b616a3aa928cd3fd519f3dc7fc1a9f366569fe21778f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dcc675b8edfcd72c64657bda8fb6bdbae9b7a6cda6589f3ad8216c69848c6df2",
+				"dweb:/ipfs/QmeYniCRzdTKyBkCyHcYRh95SAWGe12eJXNMJg7ntMFbW5"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceMultiSig.sol": {
+			"keccak256": "0x0055a249079e0e1eaf32391751237bfb6cc7526070623a83cae4a54a263a870d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ace5c1f7171187ed927be3cff005b2e6c6d18b9bd9aef26c8a6ce503debf9de1",
+				"dweb:/ipfs/QmaCJLXwAXPU5CsVJNQfc8KPGpiaAGzp8Now3dUMCLr5Ci"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceProfiles.sol": {
+			"keccak256": "0xc3e7d73599515dce9dc7594a0eeaf3ce0c9b5fe90632c4d069f8c154a884d0b5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://471ec626f831982a3706de1e2ad78b2bdb5d092f875b0b3db9d71fb6ab86262d",
+				"dweb:/ipfs/Qmd6ysRsFLkk8WPHCGcjZRsDUwEU13btYj9LDekkAGjKgE"
+			]
+		}
+	},
+	"version": 1
+}

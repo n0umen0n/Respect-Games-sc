@@ -1,0 +1,658 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "InvalidInitialization",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotInitializing",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "version",
+						"type": "uint64"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "communityId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "member",
+						"type": "address"
+					}
+				],
+				"name": "MemberRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "communityId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "proposalId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum CommunityGovernanceMultiSigStorage.ProposalType",
+						"name": "proposalType",
+						"type": "uint8"
+					}
+				],
+				"name": "ProposalCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "communityId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "proposalId",
+						"type": "uint256"
+					}
+				],
+				"name": "ProposalExecuted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "communityId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "proposalId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "signer",
+						"type": "address"
+					}
+				],
+				"name": "ProposalSigned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "communityId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "RespectToDistributeChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "communityId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "TokensMinted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "communityId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[5]",
+						"name": "topUsers",
+						"type": "address[5]"
+					}
+				],
+				"name": "TopRespectedUsersUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "contributionsContract",
+				"outputs": [
+					{
+						"internalType": "contract ICommunityGovernanceContributions",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_proposalId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum CommunityGovernanceMultiSigStorage.ProposalType",
+						"name": "_type",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_targetMember",
+						"type": "address"
+					}
+				],
+				"name": "createProposal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					}
+				],
+				"name": "getMultiSigInfo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "respectToDistribute",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address[5]",
+						"name": "topRespectedUsers",
+						"type": "address[5]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_proposalId",
+						"type": "uint256"
+					}
+				],
+				"name": "getProposal",
+				"outputs": [
+					{
+						"internalType": "enum CommunityGovernanceMultiSigStorage.ProposalType",
+						"name": "proposalType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "targetMember",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "signatureCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "executed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					}
+				],
+				"name": "getRespectToDistribute",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					}
+				],
+				"name": "getTopRespectedUsers",
+				"outputs": [
+					{
+						"internalType": "address[5]",
+						"name": "",
+						"type": "address[5]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_proposalId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_signer",
+						"type": "address"
+					}
+				],
+				"name": "hasSignedProposal",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "initialOwner",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "profilesContract",
+				"outputs": [
+					{
+						"internalType": "contract ICommunityGovernanceProfiles",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contributionsContractAddress",
+						"type": "address"
+					}
+				],
+				"name": "setContributionsContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_profilesContractAddress",
+						"type": "address"
+					}
+				],
+				"name": "setProfilesContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_proposalId",
+						"type": "uint256"
+					}
+				],
+				"name": "signProposal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_communityId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address[]",
+						"name": "allMembers",
+						"type": "address[]"
+					}
+				],
+				"name": "updateTopRespectedUsers",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"InvalidInitialization()": [
+					{
+						"details": "The contract is already initialized."
+					}
+				],
+				"NotInitializing()": [
+					{
+						"details": "The contract is not initializing."
+					}
+				],
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
+			"events": {
+				"Initialized(uint64)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contractsproxy/CommunityGovernanceMultisigImplementation.sol": "CommunityGovernanceMultiSigImplementation"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol": {
+			"keccak256": "0xc163fcf9bb10138631a9ba5564df1fa25db9adff73bd9ee868a8ae1858fe093a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9706d43a0124053d9880f6e31a59f31bc0a6a3dc1acd66ce0a16e1111658c5f6",
+				"dweb:/ipfs/QmUFmfowzkRwGtDu36cXV9SPTBHJ3n7dG9xQiK5B28jTf2"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x631188737069917d2f909d29ce62c4d48611d326686ba6683e26b72a23bfac0b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7a61054ae84cd6c4d04c0c4450ba1d6de41e27e0a2c4f1bcdf58f796b401c609",
+				"dweb:/ipfs/QmUvtdp7X1mRVyC3CsHrtPbgoqWaXHp3S1ZR24tpAQYJWM"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+			"keccak256": "0xdbef5f0c787055227243a7318ef74c8a5a1108ca3a07f2b3a00ef67769e1e397",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://08e39f23d5b4692f9a40803e53a8156b72b4c1f9902a88cd65ba964db103dab9",
+				"dweb:/ipfs/QmPKn6EYDgpga7KtpkA8wV2yJCYGMtc9K4LkJfhKX2RVSV"
+			]
+		},
+		"contractsproxy/CommunityGovernanceMultiSigStorage.sol": {
+			"keccak256": "0x2381ff2b9c55f785473628f97d6d704a817b8849b2635da1455d77d3b3c3e738",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e7c57df9986dd5c42f12aadda146559deed38dc1e524abcef7ade265fd7ac02f",
+				"dweb:/ipfs/QmdajnxJYS5VVDaL2hRRAgRiqgn1EvYNJvXPhtxkjhb1Qj"
+			]
+		},
+		"contractsproxy/CommunityGovernanceMultisigImplementation.sol": {
+			"keccak256": "0xc1e54ee1108dc20106e8e3318ab2da81da249c34edba17894e1e0090bee5e76a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://07ddd455e7ab4c649ce7ec29e36d6a7a2b793d76db6c7024f4abd14ff067a961",
+				"dweb:/ipfs/QmXLzQyPZUoYyxrBTH1nr7JRWPDxaqwnsqUxqPz4ZRFLau"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceContributions.sol": {
+			"keccak256": "0x621cfea1f4f183682315b616a3aa928cd3fd519f3dc7fc1a9f366569fe21778f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dcc675b8edfcd72c64657bda8fb6bdbae9b7a6cda6589f3ad8216c69848c6df2",
+				"dweb:/ipfs/QmeYniCRzdTKyBkCyHcYRh95SAWGe12eJXNMJg7ntMFbW5"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceMultiSig.sol": {
+			"keccak256": "0x0055a249079e0e1eaf32391751237bfb6cc7526070623a83cae4a54a263a870d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ace5c1f7171187ed927be3cff005b2e6c6d18b9bd9aef26c8a6ce503debf9de1",
+				"dweb:/ipfs/QmaCJLXwAXPU5CsVJNQfc8KPGpiaAGzp8Now3dUMCLr5Ci"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceProfiles.sol": {
+			"keccak256": "0xc3e7d73599515dce9dc7594a0eeaf3ce0c9b5fe90632c4d069f8c154a884d0b5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://471ec626f831982a3706de1e2ad78b2bdb5d092f875b0b3db9d71fb6ab86262d",
+				"dweb:/ipfs/Qmd6ysRsFLkk8WPHCGcjZRsDUwEU13btYj9LDekkAGjKgE"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityToken.sol": {
+			"keccak256": "0xadc7a1fd95f5aaa8076efc7056df8f0c192397b10de600b38a8a2053922d77f7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://20db1b8e35539a19d455dee14a2d9a87f0ba33f98647bca21a78d5a50edffd86",
+				"dweb:/ipfs/QmUqernYFv2XgxSBCPLvcQc4sBXeAwxtP2vmwWrX1riWy8"
+			]
+		}
+	},
+	"version": 1
+}

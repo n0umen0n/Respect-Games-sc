@@ -1,0 +1,123 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "InvalidInitialization",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotInitializing",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "version",
+						"type": "uint64"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "profilesContract",
+				"outputs": [
+					{
+						"internalType": "contract ICommunityGovernanceProfiles",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"InvalidInitialization()": [
+					{
+						"details": "The contract is already initialized."
+					}
+				],
+				"NotInitializing()": [
+					{
+						"details": "The contract is not initializing."
+					}
+				]
+			},
+			"events": {
+				"Initialized(uint64)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				}
+			},
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contractsproxy/CommunityGovernanceContributionsStorage.sol": "CommunityGovernanceContributionsStorage"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x631188737069917d2f909d29ce62c4d48611d326686ba6683e26b72a23bfac0b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7a61054ae84cd6c4d04c0c4450ba1d6de41e27e0a2c4f1bcdf58f796b401c609",
+				"dweb:/ipfs/QmUvtdp7X1mRVyC3CsHrtPbgoqWaXHp3S1ZR24tpAQYJWM"
+			]
+		},
+		"contractsproxy/CommunityGovernanceContributionsStorage.sol": {
+			"keccak256": "0xd0fc36049a7cde4271887153c04de2526aff6e1966e1356dfbcb838aaa257a15",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://78f963187fbc19702b92bd278f817fa6db8752483994c10c540adada1e083d51",
+				"dweb:/ipfs/QmaqkhE7A2s1Tq1Rn3wfR89LJrcMZjmZeAYQiEfqFEej5h"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceContributions.sol": {
+			"keccak256": "0x621cfea1f4f183682315b616a3aa928cd3fd519f3dc7fc1a9f366569fe21778f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dcc675b8edfcd72c64657bda8fb6bdbae9b7a6cda6589f3ad8216c69848c6df2",
+				"dweb:/ipfs/QmeYniCRzdTKyBkCyHcYRh95SAWGe12eJXNMJg7ntMFbW5"
+			]
+		},
+		"contractsproxy/interfaces/ICommunityGovernanceProfiles.sol": {
+			"keccak256": "0xc3e7d73599515dce9dc7594a0eeaf3ce0c9b5fe90632c4d069f8c154a884d0b5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://471ec626f831982a3706de1e2ad78b2bdb5d092f875b0b3db9d71fb6ab86262d",
+				"dweb:/ipfs/Qmd6ysRsFLkk8WPHCGcjZRsDUwEU13btYj9LDekkAGjKgE"
+			]
+		}
+	},
+	"version": 1
+}
